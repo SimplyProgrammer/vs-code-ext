@@ -5,7 +5,7 @@ import { getUri } from "../app@utils/urls";
 export class ComponentStatePanel {
 	public static readonly WEBVIEW_DIR = "webview-ui";
 
-	public static currentPanel: ComponentStatePanel | undefined;
+	public static currentPanel?: ComponentStatePanel;
 
 	private readonly panel: WebviewPanel;
 	private disposables: Disposable[] = [];
@@ -53,10 +53,8 @@ export class ComponentStatePanel {
 			ViewColumn.One,
 			// Extra panel configurations
 			{
-				// Enable JavaScript in the webview
 				enableScripts: true,
-				// Restrict the webview to only load resources from the `out` and `webview-ui/build` directories
-				localResourceRoots: [Uri.joinPath(extensionUri, "out"), Uri.joinPath(extensionUri, "webview-ui/build")],
+				localResourceRoots: [Uri.joinPath(extensionUri, "out"), Uri.joinPath(extensionUri, "webview-ui/dist")],
 			}
 		);
 
@@ -94,9 +92,9 @@ export class ComponentStatePanel {
 	 */
 	private getWebviewContent(webview: Webview, extensionUri: Uri) {
 		// The CSS file from the React build output
-		const stylesUri = getUri(webview, extensionUri, [ComponentStatePanel.WEBVIEW_DIR, "build", "assets", "index.css"]);
+		const stylesUri = getUri(webview, extensionUri, [ComponentStatePanel.WEBVIEW_DIR, "dist", "assets", "index.css"]);
 		// The JS file from the React build output
-		const scriptUri = getUri(webview, extensionUri, [ComponentStatePanel.WEBVIEW_DIR, "build", "assets", "index.js"]);
+		const scriptUri = getUri(webview, extensionUri, [ComponentStatePanel.WEBVIEW_DIR, "dist", "assets", "index.js"]);
 
 		const nonce = getNonce();
 

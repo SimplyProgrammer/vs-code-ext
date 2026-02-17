@@ -43,12 +43,12 @@ function App() {
 		</div>
 	);
 
-	function handleHowdyClick() {
-		vscode.postMessage({
-			command: "hello",
-			text: "Hey there partner!",
-		});
-	}
+	// function handleHowdyClick() {
+	// 	vscode.postMessage({
+	// 		command: "hello",
+	// 		text: "Hey there partner!",
+	// 	});
+	// }
 
 	// return (
 	// 	<>

@@ -13,7 +13,6 @@ export default defineConfig({
     tailwindcss(),
   ],
   build: {
-    outDir: "build",
     rollupOptions: {
       output: {
         entryFileNames: `assets/[name].js`,
